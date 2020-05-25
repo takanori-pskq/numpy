@@ -10,16 +10,16 @@ UFunc API
 Constants
 ---------
 
-.. c:var:: UFUNC_ERR_{HANDLER}
+.. :ref: UFUNC_ERR_{HANDLER}
 
     ``{HANDLER}`` can be **IGNORE**, **WARN**, **RAISE**, or **CALL**
 
-.. c:var:: UFUNC_{THING}_{ERR}
+.. :ref: UFUNC_{THING}_{ERR}
 
     ``{THING}`` can be **MASK**, **SHIFT**, or **FPE**, and ``{ERR}`` can
     be **DIVIDEBYZERO**, **OVERFLOW**, **UNDERFLOW**, and **INVALID**.
 
-.. c:var:: PyUFunc_{VALUE}
+.. :ref: PyUFunc_{VALUE}
 
     .. c:macro:: PyUFunc_One
 
@@ -76,7 +76,7 @@ Functions
         (element-by-element) function :math:`N` times with the following
         signature:
 
-        .. c:function:: void loopfunc(
+        .. c:function:: void loopfunc( \
                 char** args, npy_intp const *dimensions, npy_intp const *steps, void* data)
 
             *args*

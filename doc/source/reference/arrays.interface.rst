@@ -197,7 +197,7 @@ C-struct access
 This approach to the array interface allows for faster access to an
 array using only one attribute lookup and a well-defined C-structure.
 
-.. c:var:: __array_struct__
+.. data:: __array_struct__
 
    A :c:type:`PyCapsule` whose ``pointer`` member contains a
    pointer to a filled :c:type:`PyArrayInterface` structure.  Memory

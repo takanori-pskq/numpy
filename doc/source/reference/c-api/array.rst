@@ -23,8 +23,8 @@ Array structure and data access
 These macros access the :c:type:`PyArrayObject` structure members and are
 defined in ``ndarraytypes.h``. The input argument, *arr*, can be any
 :c:type:`PyObject *<PyObject>` that is directly interpretable as a
-:c:type:`PyArrayObject *` (any instance of the :c:data:`PyArray_Type`
-and itssub-types).
+:c:type:`PyArrayObject *<PyArrayObject>` (any instance of the
+:c:data:`PyArray_Type` and its sub-types).
 
 .. c:function:: int PyArray_NDIM(PyArrayObject *arr)
 
@@ -326,7 +326,7 @@ From scratch
     Create a new array with the provided data-type descriptor, *descr*,
     of the shape determined by *nd* and *dims*.
 
-.. c:function:: PyArray_FILLWBYTE(PyObject* obj, int val)
+.. c:macro:: PyArray_FILLWBYTE(obj, val)
 
     Fill the array pointed to by *obj* ---which must be a (subclass
     of) ndarray---with the contents of *val* (evaluated as a byte).
@@ -790,17 +790,17 @@ Dealing with types
 General check of Python Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. c:function:: PyArray_Check(PyObject *op)
+.. c:macro:: PyArray_Check(op)
 
     Evaluates true if *op* is a Python object whose type is a sub-type
     of :c:data:`PyArray_Type`.
 
-.. c:function:: PyArray_CheckExact(PyObject *op)
+.. c:macro:: PyArray_CheckExact(op)
 
     Evaluates true if *op* is a Python object with type
     :c:data:`PyArray_Type`.
 
-.. c:function:: PyArray_HasArrayInterface(PyObject *op, PyObject *out)
+.. c:macro:: PyArray_HasArrayInterface(op, out)
 
     If ``op`` implements any part of the array interface, then ``out``
     will contain a new reference to the newly created ndarray using
@@ -808,7 +808,7 @@ General check of Python Type
     conversion occurs. Otherwise, out will contain a borrowed
     reference to :c:data:`Py_NotImplemented` and no error condition is set.
 
-.. c:function:: PyArray_HasArrayInterfaceType(op, dtype, context, out)
+.. c:macro:: PyArray_HasArrayInterfaceType(op, dtype, context, out)
 
     If ``op`` implements any part of the array interface, then ``out``
     will contain a new reference to the newly created ndarray using
@@ -819,38 +819,38 @@ General check of Python Type
     that looks for the :obj:`~numpy.class.__array__` attribute. `context` is
     unused.
 
-.. c:function:: PyArray_IsZeroDim(op)
+.. c:macro:: PyArray_IsZeroDim(op)
 
     Evaluates true if *op* is an instance of (a subclass of)
     :c:data:`PyArray_Type` and has 0 dimensions.
 
-.. c:function:: PyArray_IsScalar(op, cls)
+.. c:macro:: PyArray_IsScalar(op, cls)
 
     Evaluates true if *op* is an instance of ``Py{cls}ArrType_Type``.
 
-.. c:function:: PyArray_CheckScalar(op)
+.. c:macro:: PyArray_CheckScalar(op)
 
     Evaluates true if *op* is either an array scalar (an instance of a
     sub-type of :c:data:`PyGenericArr_Type` ), or an instance of (a
     sub-class of) :c:data:`PyArray_Type` whose dimensionality is 0.
 
-.. c:function:: PyArray_IsPythonNumber(op)
+.. c:macro:: PyArray_IsPythonNumber(op)
 
     Evaluates true if *op* is an instance of a builtin numeric type (int,
     float, complex, long, bool)
 
-.. c:function:: PyArray_IsPythonScalar(op)
+.. c:macro:: PyArray_IsPythonScalar(op)
 
     Evaluates true if *op* is a builtin Python scalar object (int,
     float, complex, bytes, str, long, bool).
 
-.. c:function:: PyArray_IsAnyScalar(op)
+.. c:macro:: PyArray_IsAnyScalar(op)
 
     Evaluates true if *op* is either a Python scalar object (see
     :c:func:`PyArray_IsPythonScalar`) or an array scalar (an instance of a sub-
     type of :c:data:`PyGenericArr_Type` ).
 
-.. c:function:: PyArray_CheckAnyScalar(op)
+.. c:macro:: PyArray_CheckAnyScalar(op)
 
     Evaluates true if *op* is a Python scalar object (see
     :c:func:`PyArray_IsPythonScalar`), an array scalar (an instance of a
@@ -864,84 +864,84 @@ Data-type checking
 For the typenum macros, the argument is an integer representing an
 enumerated array data type. For the array type checking macros the
 argument must be a :c:type:`PyObject *<PyObject>` that can be directly interpreted as a
-:c:type:`PyArrayObject *`.
+:c:type:`PyArrayObject *<PyArrayObject>`.
 
-.. c:function:: PyTypeNum_ISUNSIGNED(int num)
+.. c:macro:: PyTypeNum_ISUNSIGNED(num)
 
-.. c:function:: PyDataType_ISUNSIGNED(PyArray_Descr *descr)
+.. c:macro:: PyDataType_ISUNSIGNED(descr)
 
-.. c:function:: PyArray_ISUNSIGNED(PyArrayObject *obj)
+.. c:macro:: PyArray_ISUNSIGNED(obj)
 
     Type represents an unsigned integer.
 
-.. c:function:: PyTypeNum_ISSIGNED(int num)
+.. c:macro:: PyTypeNum_ISSIGNED(num)
 
-.. c:function:: PyDataType_ISSIGNED(PyArray_Descr *descr)
+.. c:macro:: PyDataType_ISSIGNED(descr)
 
-.. c:function:: PyArray_ISSIGNED(PyArrayObject *obj)
+.. c:macro:: PyArray_ISSIGNED(obj)
 
     Type represents a signed integer.
 
-.. c:function:: PyTypeNum_ISINTEGER(int num)
+.. c:macro:: PyTypeNum_ISINTEGER(num)
 
-.. c:function:: PyDataType_ISINTEGER(PyArray_Descr* descr)
+.. c:macro:: PyDataType_ISINTEGER(descr)
 
-.. c:function:: PyArray_ISINTEGER(PyArrayObject *obj)
+.. c:macro:: PyArray_ISINTEGER(obj)
 
     Type represents any integer.
 
-.. c:function:: PyTypeNum_ISFLOAT(int num)
+.. c:macro:: PyTypeNum_ISFLOAT(num)
 
-.. c:function:: PyDataType_ISFLOAT(PyArray_Descr* descr)
+.. c:macro:: PyDataType_ISFLOAT(descr)
 
-.. c:function:: PyArray_ISFLOAT(PyArrayObject *obj)
+.. c:macro:: PyArray_ISFLOAT(obj)
 
     Type represents any floating point number.
 
-.. c:function:: PyTypeNum_ISCOMPLEX(int num)
+.. c:macro:: PyTypeNum_ISCOMPLEX(num)
 
-.. c:function:: PyDataType_ISCOMPLEX(PyArray_Descr* descr)
+.. c:macro:: PyDataType_ISCOMPLEX(descr)
 
-.. c:function:: PyArray_ISCOMPLEX(PyArrayObject *obj)
+.. c:macro:: PyArray_ISCOMPLEX(obj)
 
     Type represents any complex floating point number.
 
-.. c:function:: PyTypeNum_ISNUMBER(int num)
+.. c:macro:: PyTypeNum_ISNUMBER(num)
 
-.. c:function:: PyDataType_ISNUMBER(PyArray_Descr* descr)
+.. c:macro:: PyDataType_ISNUMBER(descr)
 
-.. c:function:: PyArray_ISNUMBER(PyArrayObject *obj)
+.. c:macro:: PyArray_ISNUMBER(obj)
 
     Type represents any integer, floating point, or complex floating point
     number.
 
-.. c:function:: PyTypeNum_ISSTRING(int num)
+.. c:macro:: PyTypeNum_ISSTRING(num)
 
-.. c:function:: PyDataType_ISSTRING(PyArray_Descr* descr)
+.. c:macro:: PyDataType_ISSTRING(descr)
 
-.. c:function:: PyArray_ISSTRING(PyArrayObject *obj)
+.. c:macro:: PyArray_ISSTRING(obj)
 
     Type represents a string data type.
 
-.. c:function:: PyTypeNum_ISPYTHON(int num)
+.. c:macro:: PyTypeNum_ISPYTHON(num)
 
-.. c:function:: PyDataType_ISPYTHON(PyArray_Descr* descr)
+.. c:macro:: PyDataType_ISPYTHON(descr)
 
-.. c:function:: PyArray_ISPYTHON(PyArrayObject *obj)
+.. c:macro:: PyArray_ISPYTHON(obj)
 
     Type represents an enumerated type corresponding to one of the
     standard Python scalar (bool, int, float, or complex).
 
-.. c:function:: PyTypeNum_ISFLEXIBLE(int num)
+.. c:macro:: PyTypeNum_ISFLEXIBLE(num)
 
-.. c:function:: PyDataType_ISFLEXIBLE(PyArray_Descr* descr)
+.. c:macro:: PyDataType_ISFLEXIBLE(descr)
 
-.. c:function:: PyArray_ISFLEXIBLE(PyArrayObject *obj)
+.. c:macro:: PyArray_ISFLEXIBLE(obj)
 
     Type represents one of the flexible array types ( :c:data:`NPY_STRING`,
     :c:data:`NPY_UNICODE`, or :c:data:`NPY_VOID` ).
 
-.. c:function:: PyDataType_ISUNSIZED(PyArray_Descr* descr):
+.. c:macro:: PyDataType_ISUNSIZED(descr)
 
     Type has no size information attached, and can be resized. Should only be
     called on flexible dtypes. Types that are attached to an array will always
@@ -951,50 +951,50 @@ argument must be a :c:type:`PyObject *<PyObject>` that can be directly interpret
 
     For structured datatypes with no fields this function now returns False.
 
-.. c:function:: PyTypeNum_ISUSERDEF(int num)
+.. c:macro:: PyTypeNum_ISUSERDEF(num)
 
-.. c:function:: PyDataType_ISUSERDEF(PyArray_Descr* descr)
+.. c:macro:: PyDataType_ISUSERDEF(descr)
 
-.. c:function:: PyArray_ISUSERDEF(PyArrayObject *obj)
+.. c:macro:: PyArray_ISUSERDEF(obj)
 
     Type represents a user-defined type.
 
-.. c:function:: PyTypeNum_ISEXTENDED(int num)
+.. c:macro:: PyTypeNum_ISEXTENDED(num)
 
-.. c:function:: PyDataType_ISEXTENDED(PyArray_Descr* descr)
+.. c:macro:: PyDataType_ISEXTENDED(descr)
 
-.. c:function:: PyArray_ISEXTENDED(PyArrayObject *obj)
+.. c:macro:: PyArray_ISEXTENDED(obj)
 
     Type is either flexible or user-defined.
 
-.. c:function:: PyTypeNum_ISOBJECT(int num)
+.. c:macro:: PyTypeNum_ISOBJECT(num)
 
-.. c:function:: PyDataType_ISOBJECT(PyArray_Descr* descr)
+.. c:macro:: PyDataType_ISOBJECT(descr)
 
-.. c:function:: PyArray_ISOBJECT(PyArrayObject *obj)
+.. c:macro:: PyArray_ISOBJECT(obj)
 
     Type represents object data type.
 
-.. c:function:: PyTypeNum_ISBOOL(int num)
+.. c:macro:: PyTypeNum_ISBOOL(num)
 
-.. c:function:: PyDataType_ISBOOL(PyArray_Descr* descr)
+.. c:macro:: PyDataType_ISBOOL(descr)
 
-.. c:function:: PyArray_ISBOOL(PyArrayObject *obj)
+.. c:macro:: PyArray_ISBOOL(obj)
 
     Type represents Boolean data type.
 
-.. c:function:: PyDataType_HASFIELDS(PyArray_Descr* descr)
+.. c:macro:: PyDataType_HASFIELDS(descr)
 
-.. c:function:: PyArray_HASFIELDS(PyArrayObject *obj)
+.. c:macro:: PyArray_HASFIELDS(obj)
 
     Type has fields associated with it.
 
-.. c:function:: PyArray_ISNOTSWAPPED(m)
+.. c:macro:: PyArray_ISNOTSWAPPED(m)
 
     Evaluates true if the data area of the ndarray *m* is in machine
     byte-order according to the array's data-type descriptor.
 
-.. c:function:: PyArray_ISBYTESWAPPED(m)
+.. c:macro:: PyArray_ISBYTESWAPPED(m)
 
     Evaluates true if the data area of the ndarray *m* is **not** in
     machine byte-order according to the array's data-type descriptor.
@@ -1019,9 +1019,9 @@ argument must be a :c:type:`PyObject *<PyObject>` that can be directly interpret
     Special case of :c:func:`PyArray_EquivTypes` (...) that does not accept
     flexible data types but may be easier to call.
 
-.. c:function:: int PyArray_EquivByteorders({byteorder} b1, {byteorder} b2)
+.. c:function:: int PyArray_EquivByteorders(int b1, int b2)
 
-    True if byteorder characters ( :c:data:`NPY_LITTLE`,
+    True if byteorder characters *b1* and *b2* ( :c:data:`NPY_LITTLE`,
     :c:data:`NPY_BIG`, :c:data:`NPY_NATIVE`, :c:data:`NPY_IGNORE` ) are
     either equal or equivalent as to their specification of a native
     byte order. Thus, on a little-endian machine :c:data:`NPY_LITTLE`
@@ -1529,7 +1529,7 @@ Flag checking
 For all of these macros *arr* must be an instance of a (subclass of)
 :c:data:`PyArray_Type`.
 
-.. c:function:: PyArray_CHKFLAGS(PyObject *arr, flags)
+.. c:macro:: PyArray_CHKFLAGS(arr, flags)
 
     The first parameter, arr, must be an ndarray or subclass. The
     parameter, *flags*, should be an integer consisting of bitwise
@@ -1539,60 +1539,60 @@ For all of these macros *arr* must be an instance of a (subclass of)
     :c:data:`NPY_ARRAY_WRITEABLE`, :c:data:`NPY_ARRAY_WRITEBACKIFCOPY`,
     :c:data:`NPY_ARRAY_UPDATEIFCOPY`.
 
-.. c:function:: PyArray_IS_C_CONTIGUOUS(PyObject *arr)
+.. c:macro:: PyArray_IS_C_CONTIGUOUS(arr)
 
     Evaluates true if *arr* is C-style contiguous.
 
-.. c:function:: PyArray_IS_F_CONTIGUOUS(PyObject *arr)
+.. c:macro:: PyArray_IS_F_CONTIGUOUS(arr)
 
     Evaluates true if *arr* is Fortran-style contiguous.
 
-.. c:function:: PyArray_ISFORTRAN(PyObject *arr)
+.. c:macro:: PyArray_ISFORTRAN(arr)
 
     Evaluates true if *arr* is Fortran-style contiguous and *not*
     C-style contiguous. :c:func:`PyArray_IS_F_CONTIGUOUS`
     is the correct way to test for Fortran-style contiguity.
 
-.. c:function:: PyArray_ISWRITEABLE(PyObject *arr)
+.. c:macro:: PyArray_ISWRITEABLE(arr)
 
     Evaluates true if the data area of *arr* can be written to
 
-.. c:function:: PyArray_ISALIGNED(PyObject *arr)
+.. c:macro:: PyArray_ISALIGNED(arr)
 
     Evaluates true if the data area of *arr* is properly aligned on
     the machine.
 
-.. c:function:: PyArray_ISBEHAVED(PyObject *arr)
+.. c:macro:: PyArray_ISBEHAVED(arr)
 
     Evaluates true if the data area of *arr* is aligned and writeable
     and in machine byte-order according to its descriptor.
 
-.. c:function:: PyArray_ISBEHAVED_RO(PyObject *arr)
+.. c:macro:: PyArray_ISBEHAVED_RO(arr)
 
     Evaluates true if the data area of *arr* is aligned and in machine
     byte-order.
 
-.. c:function:: PyArray_ISCARRAY(PyObject *arr)
+.. c:macro:: PyArray_ISCARRAY(arr)
 
     Evaluates true if the data area of *arr* is C-style contiguous,
     and :c:func:`PyArray_ISBEHAVED` (*arr*) is true.
 
-.. c:function:: PyArray_ISFARRAY(PyObject *arr)
+.. c:macro:: PyArray_ISFARRAY(arr)
 
     Evaluates true if the data area of *arr* is Fortran-style
     contiguous and :c:func:`PyArray_ISBEHAVED` (*arr*) is true.
 
-.. c:function:: PyArray_ISCARRAY_RO(PyObject *arr)
+.. c:macro:: PyArray_ISCARRAY_RO(arr)
 
     Evaluates true if the data area of *arr* is C-style contiguous,
     aligned, and in machine byte-order.
 
-.. c:function:: PyArray_ISFARRAY_RO(PyObject *arr)
+.. c:macro:: PyArray_ISFARRAY_RO(arr)
 
     Evaluates true if the data area of *arr* is Fortran-style
     contiguous, aligned, and in machine byte-order **.**
 
-.. c:function:: PyArray_ISONESEGMENT(PyObject *arr)
+.. c:macro:: PyArray_ISONESEGMENT(arr)
 
     Evaluates true if the data area of *arr* consists of a single
     (C-style or Fortran-style) contiguous segment.
@@ -2352,59 +2352,61 @@ it is possible to do this.
 Defining an :c:type:`NpyAuxData` is similar to defining a class in C++,
 but the object semantics have to be tracked manually since the API is in C.
 Here's an example for a function which doubles up an element using
-an element copier function as a primitive.::
+an element copier function as a primitive.
 
-    typedef struct {
-        NpyAuxData base;
-        ElementCopier_Func *func;
-        NpyAuxData *funcdata;
-    } eldoubler_aux_data;
+.. code-block:: c
 
-    void free_element_doubler_aux_data(NpyAuxData *data)
-    {
-        eldoubler_aux_data *d = (eldoubler_aux_data *)data;
-        /* Free the memory owned by this auxdata */
-        NPY_AUXDATA_FREE(d->funcdata);
-        PyArray_free(d);
-    }
+   typedef struct {
+       NpyAuxData base;
+       ElementCopier_Func *func;
+       NpyAuxData *funcdata;
+   } eldoubler_aux_data;
 
-    NpyAuxData *clone_element_doubler_aux_data(NpyAuxData *data)
-    {
-        eldoubler_aux_data *ret = PyArray_malloc(sizeof(eldoubler_aux_data));
-        if (ret == NULL) {
-            return NULL;
-        }
+   void free_element_doubler_aux_data(NpyAuxData *data)
+   {
+       eldoubler_aux_data *d = (eldoubler_aux_data *)data;
+       /* Free the memory owned by this auxdata */
+       NPY_AUXDATA_FREE(d->funcdata);
+       PyArray_free(d);
+   }
 
-        /* Raw copy of all data */
-        memcpy(ret, data, sizeof(eldoubler_aux_data));
+   NpyAuxData *clone_element_doubler_aux_data(NpyAuxData *data)
+   {
+       eldoubler_aux_data *ret = PyArray_malloc(sizeof(eldoubler_aux_data));
+       if (ret == NULL) {
+           return NULL;
+       }
 
-        /* Fix up the owned auxdata so we have our own copy */
-        ret->funcdata = NPY_AUXDATA_CLONE(ret->funcdata);
-        if (ret->funcdata == NULL) {
-            PyArray_free(ret);
-            return NULL;
-        }
+       /* Raw copy of all data */
+       memcpy(ret, data, sizeof(eldoubler_aux_data));
 
-        return (NpyAuxData *)ret;
-    }
+       /* Fix up the owned auxdata so we have our own copy */
+       ret->funcdata = NPY_AUXDATA_CLONE(ret->funcdata);
+       if (ret->funcdata == NULL) {
+           PyArray_free(ret);
+           return NULL;
+       }
 
-    NpyAuxData *create_element_doubler_aux_data(
-                                ElementCopier_Func *func,
-                                NpyAuxData *funcdata)
-    {
-        eldoubler_aux_data *ret = PyArray_malloc(sizeof(eldoubler_aux_data));
-        if (ret == NULL) {
-            PyErr_NoMemory();
-            return NULL;
-        }
-        memset(&ret, 0, sizeof(eldoubler_aux_data));
-        ret->base->free = &free_element_doubler_aux_data;
-        ret->base->clone = &clone_element_doubler_aux_data;
-        ret->func = func;
-        ret->funcdata = funcdata;
+       return (NpyAuxData *)ret;
+   }
 
-        return (NpyAuxData *)ret;
-    }
+   NpyAuxData *create_element_doubler_aux_data(
+                               ElementCopier_Func *func,
+                               NpyAuxData *funcdata)
+   {
+       eldoubler_aux_data *ret = PyArray_malloc(sizeof(eldoubler_aux_data));
+       if (ret == NULL) {
+           PyErr_NoMemory();
+           return NULL;
+       }
+       memset(&ret, 0, sizeof(eldoubler_aux_data));
+       ret->base->free = &free_element_doubler_aux_data;
+       ret->base->clone = &clone_element_doubler_aux_data;
+       ret->func = func;
+       ret->funcdata = funcdata;
+
+       return (NpyAuxData *)ret;
+   }
 
 .. c:type:: NpyAuxData_FreeFunc
 
@@ -2416,12 +2418,12 @@ an element copier function as a primitive.::
     functions should never set the Python exception on error, because
     they may be called from a multi-threaded context.
 
-.. c:function:: NPY_AUXDATA_FREE(auxdata)
+.. c:macro:: NPY_AUXDATA_FREE(auxdata)
 
     A macro which calls the auxdata's free function appropriately,
     does nothing if auxdata is NULL.
 
-.. c:function:: NPY_AUXDATA_CLONE(auxdata)
+.. c:macro:: NPY_AUXDATA_CLONE(auxdata)
 
     A macro which calls the auxdata's clone function appropriately,
     returning a deep copy of the auxiliary data.
@@ -2488,7 +2490,7 @@ this useful approach to looping over an array.
     *destination*, which must have size at least *iterator*
     ->nd_m1+1.
 
-.. c:function:: PyArray_ITER_GOTO1D(PyObject* iterator, npy_intp index)
+.. c:macro:: PyArray_ITER_GOTO1D(iterator, index)
 
     Set the *iterator* index and dataptr to the location in the array
     indicated by the integer *index* which points to an element in the
@@ -2778,14 +2780,16 @@ Data-type descriptors
     Data-type objects must be reference counted so be aware of the
     action on the data-type reference of different C-API calls. The
     standard rule is that when a data-type object is returned it is a
-    new reference.  Functions that take :c:type:`PyArray_Descr *` objects and
+    new reference.  Functions that take
+    :c:type:`PyArray_Descr *<PyArray_Descr>` objects and
     return arrays steal references to the data-type their inputs
     unless otherwise noted. Therefore, you must own a reference to any
     data-type object used as input to such a function.
 
 .. c:function:: int PyArray_DescrCheck(PyObject* obj)
 
-    Evaluates as true if *obj* is a data-type object ( :c:type:`PyArray_Descr *` ).
+    Evaluates as true if *obj* is a data-type object (
+    :c:type:`PyArray_Descr *<PyArray_Descr>` ).
 
 .. c:function:: PyArray_Descr* PyArray_DescrNew(PyArray_Descr* obj)
 
@@ -3233,7 +3237,7 @@ Memory management
 
 .. c:function:: char* PyDataMem_NEW(size_t nbytes)
 
-.. c:function:: PyDataMem_FREE(char* ptr)
+.. c:function:: void PyDataMem_FREE(char* ptr)
 
 .. c:function:: char* PyDataMem_RENEW(void * ptr, size_t newbytes)
 
@@ -3242,7 +3246,7 @@ Memory management
 
 .. c:function:: npy_intp*  PyDimMem_NEW(int nd)
 
-.. c:function:: PyDimMem_FREE(char* ptr)
+.. c:function:: void PyDimMem_FREE(char* ptr)
 
 .. c:function:: npy_intp* PyDimMem_RENEW(void* ptr, size_t newnd)
 
@@ -3250,7 +3254,7 @@ Memory management
 
 .. c:function:: void* PyArray_malloc(size_t nbytes)
 
-.. c:function:: PyArray_free(void* ptr)
+.. c:function:: void PyArray_free(void* ptr)
 
 .. c:function:: void* PyArray_realloc(npy_intp* ptr, size_t nbytes)
 
@@ -3328,18 +3332,18 @@ Group 1
         interpreter. This macro acquires the GIL and restores the
         Python state from the saved variable.
 
-    .. c:function:: NPY_BEGIN_THREADS_DESCR(PyArray_Descr *dtype)
+    .. c:macro:: NPY_BEGIN_THREADS_DESCR(dtype)
 
         Useful to release the GIL only if *dtype* does not contain
         arbitrary Python objects which may need the Python interpreter
         during execution of the loop.
 
-    .. c:function:: NPY_END_THREADS_DESCR(PyArray_Descr *dtype)
+    .. c:macro:: NPY_END_THREADS_DESCR(dtype)
 
         Useful to regain the GIL in situations where it was released
         using the BEGIN form of this macro.
 
-    .. c:function:: NPY_BEGIN_THREADS_THRESHOLDED(int loop_size)
+    .. c:macro:: NPY_BEGIN_THREADS_THRESHOLDED(loop_size)
 
         Useful to release the GIL only if *loop_size* exceeds a
         minimum threshold, currently set to 500. Should be matched
@@ -3458,13 +3462,13 @@ Other constants
 Miscellaneous Macros
 ^^^^^^^^^^^^^^^^^^^^
 
-.. c:function:: PyArray_SAMESHAPE(PyArrayObject *a1, PyArrayObject *a2)
+.. c:function:: bool PyArray_SAMESHAPE(PyArrayObject *a1, PyArrayObject *a2)
 
     Evaluates as True if arrays *a1* and *a2* have the same shape.
 
-.. c:var:: a
+.. c:macro:: a
 
-.. c:var:: b
+.. c:macro:: b
 
 .. c:macro:: PyArray_MAX(a,b)
 
@@ -3493,11 +3497,11 @@ Miscellaneous Macros
     of the ordering which is lexicographic: comparing the real parts
     first and then the complex parts if the real parts are equal.
 
-.. c:function:: PyArray_REFCOUNT(PyObject* op)
+.. c:macro:: PyArray_REFCOUNT(op)
 
     Returns the reference count of any Python object.
 
-.. c:function:: PyArray_DiscardWritebackIfCopy(PyObject* obj)
+.. c:function:: void PyArray_DiscardWritebackIfCopy(PyObject* obj)
 
     If ``obj.flags`` has :c:data:`NPY_ARRAY_WRITEBACKIFCOPY` or (deprecated)
     :c:data:`NPY_ARRAY_UPDATEIFCOPY`, this function clears the flags, `DECREF` s
@@ -3508,7 +3512,7 @@ Miscellaneous Macros
     error when you are finished with ``obj``, just before ``Py_DECREF(obj)``.
     It may be called multiple times, or with ``NULL`` input.
 
-.. c:function:: PyArray_XDECREF_ERR(PyObject* obj)
+.. c:function:: void PyArray_XDECREF_ERR(PyObject* obj)
 
     Deprecated in 1.14, use :c:func:`PyArray_DiscardWritebackIfCopy`
     followed by ``Py_XDECREF``
@@ -3524,22 +3528,22 @@ Miscellaneous Macros
 Enumerated Types
 ^^^^^^^^^^^^^^^^
 
-.. c:type:: NPY_SORTKIND
+.. c:enum:: NPY_SORTKIND
 
     A special variable-type which can take on different values to indicate
     the sorting algorithm being used.
 
-    .. c:var:: NPY_QUICKSORT
+    .. c:enumerator:: NPY_QUICKSORT
 
-    .. c:var:: NPY_HEAPSORT
+    .. c:enumerator:: NPY_HEAPSORT
 
-    .. c:var:: NPY_MERGESORT
+    .. c:enumerator:: NPY_MERGESORT
 
-    .. c:var:: NPY_STABLESORT
+    .. c:enumerator:: NPY_STABLESORT
 
         Used as an alias of :c:data:`NPY_MERGESORT` and vica versa.
 
-    .. c:var:: NPY_NSORTS
+    .. c:enumerator:: NPY_NSORTS
 
        Defined to be the number of sorts. It is fixed at three by the need for
        backwards compatibility, and consequently :c:data:`NPY_MERGESORT` and
@@ -3547,74 +3551,74 @@ Enumerated Types
        of several stable sorting algorithms depending on the data type.
 
 
-.. c:type:: NPY_SCALARKIND
+.. c:enum:: NPY_SCALARKIND
 
     A special variable type indicating the number of "kinds" of
     scalars distinguished in determining scalar-coercion rules. This
     variable can take on the values:
 
-    .. c:var:: NPY_NOSCALAR
+    .. c:enumerator:: NPY_NOSCALAR
 
-    .. c:var:: NPY_BOOL_SCALAR
+    .. c:enumerator:: NPY_BOOL_SCALAR
 
-    .. c:var:: NPY_INTPOS_SCALAR
+    .. c:enumerator:: NPY_INTPOS_SCALAR
 
-    .. c:var:: NPY_INTNEG_SCALAR
+    .. c:enumerator:: NPY_INTNEG_SCALAR
 
-    .. c:var:: NPY_FLOAT_SCALAR
+    .. c:enumerator:: NPY_FLOAT_SCALAR
 
-    .. c:var:: NPY_COMPLEX_SCALAR
+    .. c:enumerator:: NPY_COMPLEX_SCALAR
 
-    .. c:var:: NPY_OBJECT_SCALAR
+    .. c:enumerator:: NPY_OBJECT_SCALAR
 
-    .. c:var:: NPY_NSCALARKINDS
+    .. c:enumerator:: NPY_NSCALARKINDS
 
        Defined to be the number of scalar kinds
        (not including :c:data:`NPY_NOSCALAR`).
 
-.. c:type:: NPY_ORDER
+.. c:enum:: NPY_ORDER
 
     An enumeration type indicating the element order that an array should be
     interpreted in. When a brand new array is created, generally
     only **NPY_CORDER** and **NPY_FORTRANORDER** are used, whereas
     when one or more inputs are provided, the order can be based on them.
 
-    .. c:var:: NPY_ANYORDER
+    .. c:enumerator:: NPY_ANYORDER
 
         Fortran order if all the inputs are Fortran, C otherwise.
 
-    .. c:var:: NPY_CORDER
+    .. c:enumerator:: NPY_CORDER
 
         C order.
 
-    .. c:var:: NPY_FORTRANORDER
+    .. c:enumerator:: NPY_FORTRANORDER
 
         Fortran order.
 
-    .. c:var:: NPY_KEEPORDER
+    .. c:enumerator:: NPY_KEEPORDER
 
         An order as close to the order of the inputs as possible, even
         if the input is in neither C nor Fortran order.
 
-.. c:type:: NPY_CLIPMODE
+.. c:enum:: NPY_CLIPMODE
 
     A variable type indicating the kind of clipping that should be
     applied in certain functions.
 
-    .. c:var:: NPY_RAISE
+    .. c:enumerator:: NPY_RAISE
 
         The default for most operations, raises an exception if an index
         is out of bounds.
 
-    .. c:var:: NPY_CLIP
+    .. c:enumerator:: NPY_CLIP
 
         Clips an index to the valid range if it is out of bounds.
 
-    .. c:var:: NPY_WRAP
+    .. c:enumerator:: NPY_WRAP
 
         Wraps an index to the valid range if it is out of bounds.
 
-.. c:type:: NPY_CASTING
+.. c:enum:: NPY_CASTING
 
     .. versionadded:: 1.6
 
@@ -3622,25 +3626,25 @@ Enumerated Types
     be. This is used by the iterator added in NumPy 1.6, and is intended
     to be used more broadly in a future version.
 
-    .. c:var:: NPY_NO_CASTING
+    .. c:enumerator:: NPY_NO_CASTING
 
         Only allow identical types.
 
-    .. c:var:: NPY_EQUIV_CASTING
+    .. c:enumerator:: NPY_EQUIV_CASTING
 
        Allow identical and casts involving byte swapping.
 
-    .. c:var:: NPY_SAFE_CASTING
+    .. c:enumerator:: NPY_SAFE_CASTING
 
        Only allow casts which will not cause values to be rounded,
        truncated, or otherwise changed.
 
-    .. c:var:: NPY_SAME_KIND_CASTING
+    .. c:enumerator:: NPY_SAME_KIND_CASTING
 
        Allow any safe casts, and casts between types of the same kind.
        For example, float64 -> float32 is permitted with this rule.
 
-    .. c:var:: NPY_UNSAFE_CASTING
+    .. c:enumerator:: NPY_UNSAFE_CASTING
 
        Allow any cast, no matter what kind of data loss may occur.
 
