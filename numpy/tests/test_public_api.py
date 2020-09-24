@@ -178,6 +178,7 @@ PUBLIC_ALIASED_MODULES = [
     "numpy.char",
     "numpy.emath",
     "numpy.rec",
+    "numpy.testing.dec",
 ]
 
 

@@ -8,7 +8,7 @@ away.
 from unittest import TestCase
 
 from ._private.utils import *
-from ._private import decorators as dec
+from . import dec
 from ._private.nosetester import (
     run_module_suite, NoseTester as Tester
     )
