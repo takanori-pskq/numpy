@@ -4,7 +4,7 @@ Philox Counter-based RNG
 .. currentmodule:: numpy.random
 
 .. autoclass:: Philox
-	:exclude-members:
+	:exclude-members: advance, jumped, random_raw
 
 State
 =====

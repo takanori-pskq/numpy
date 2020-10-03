@@ -48,7 +48,7 @@ using the state of the `RandomState`:
 
 
 .. autoclass:: RandomState
-	:exclude-members:
+	:exclude-members: beta, binomial, bytes, chisquare, choice, dirichlet, exponential, f, gamma, geometric, get_state, gumbel, hypergeometric, laplace, logistic, lognormal, logseries, multinomial, multivariate_normal, negative_binomial, noncentral_chisquare, noncentral_f, normal, pareto, permutation, poisson, power, rand, randint, randn, random, random_integers, random_sample, rayleigh, seed, set_state, shuffle, standard_cauchy, standard_exponential, standard_gamma, standard_normal, standard_t, tomaxint, triangular, uniform, vonmises, wald, weibull, zipf
 
 Seeding and State
 =================

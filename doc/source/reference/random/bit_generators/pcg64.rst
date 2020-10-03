@@ -4,7 +4,7 @@ Permuted Congruential Generator (64-bit, PCG64)
 .. currentmodule:: numpy.random
 
 .. autoclass:: PCG64
-	:exclude-members:
+	:exclude-members: advance, jumped, random_raw
 
 State
 =====

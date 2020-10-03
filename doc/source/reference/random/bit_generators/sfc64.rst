@@ -4,7 +4,7 @@ SFC64 Small Fast Chaotic PRNG
 .. currentmodule:: numpy.random
 
 .. autoclass:: SFC64
-        :exclude-members:
+        :exclude-members: random_raw
 
 State
 =====

@@ -4,7 +4,7 @@ Mersenne Twister (MT19937)
 .. currentmodule:: numpy.random
 
 .. autoclass:: MT19937
-	:exclude-members:
+	:exclude-members: jumped, random_raw
 
 State
 =====

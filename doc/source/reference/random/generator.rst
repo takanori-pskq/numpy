@@ -15,7 +15,7 @@ can be changed by passing an instantized BitGenerator to ``Generator``.
 .. autofunction:: default_rng
 
 .. autoclass:: Generator
-	:exclude-members:
+	:exclude-members: beta, binomial, bytes, chisquare, choice, dirichlet, exponential, f, gamma, geometric, gumbel, hypergeometric, integers, laplace, logistic, lognormal, logseries, multinomial, multivariate_hypergeometric, multivariate_normal, negative_binomial, noncentral_chisquare, noncentral_f, normal, pareto, permutation, permuted, poisson, power, random, rayleigh, shuffle, standard_cauchy, standard_exponential, standard_gamma, standard_normal, standard_t, triangular, uniform, vonmises, wald, weibull, zipf
 
 Accessing the BitGenerator
 ==========================
