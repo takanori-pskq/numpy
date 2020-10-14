@@ -94,112 +94,141 @@ Python Boolean scalar.
 .. tip:: The default data type in NumPy is :class:`float_`.
 
 .. autoclass:: numpy.generic
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 .. autoclass:: numpy.number
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 Integer types
 ~~~~~~~~~~~~~
 
 .. autoclass:: numpy.integer
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 Signed integer types
 ++++++++++++++++++++
 
 .. autoclass:: numpy.signedinteger
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 .. autoclass:: numpy.byte
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 .. autoclass:: numpy.short
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 .. autoclass:: numpy.intc
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 .. autoclass:: numpy.int_
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 .. autoclass:: numpy.longlong
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 Unsigned integer types
 ++++++++++++++++++++++
 
 .. autoclass:: numpy.unsignedinteger
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 .. autoclass:: numpy.ubyte
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 .. autoclass:: numpy.ushort
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 .. autoclass:: numpy.uintc
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 .. autoclass:: numpy.uint
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 .. autoclass:: numpy.ulonglong
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 Inexact types
 ~~~~~~~~~~~~~
 
 .. autoclass:: numpy.inexact
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 Floating-point types
 ++++++++++++++++++++
 
 .. autoclass:: numpy.floating
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 .. autoclass:: numpy.half
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 .. autoclass:: numpy.single
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 .. autoclass:: numpy.double
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 .. autoclass:: numpy.longdouble
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 Complex floating-point types
 ++++++++++++++++++++++++++++
 
 .. autoclass:: numpy.complexfloating
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 .. autoclass:: numpy.csingle
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 .. autoclass:: numpy.cdouble
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 .. autoclass:: numpy.clongdouble
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 Other types
 ~~~~~~~~~~~
 
 .. autoclass:: numpy.bool_
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 .. autoclass:: numpy.datetime64
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 .. autoclass:: numpy.timedelta64
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 .. autoclass:: numpy.object_
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 .. note::
 
@@ -222,16 +251,20 @@ arrays. (In the character codes ``#`` is an integer denoting how many
 elements the data type consists of.)
 
 .. autoclass:: numpy.flexible
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 .. autoclass:: numpy.bytes_
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 .. autoclass:: numpy.str_
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 .. autoclass:: numpy.void
-   :exclude-members:
+   :members: all
+   :exclude-members: all
 
 
 .. warning::
