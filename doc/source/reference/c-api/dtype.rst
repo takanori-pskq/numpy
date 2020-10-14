@@ -362,11 +362,11 @@ to the front of the integer name.
 
 .. c:type:: npy_longlong
 
-    unsigned long long int
+    long long int
 
 .. c:type:: npy_ulonglong
 
-    long long int
+    unsigned long long int
 
 .. c:type:: npy_intp
 
