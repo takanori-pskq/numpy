@@ -3473,10 +3473,6 @@ Miscellaneous Macros
 
     Evaluates as True if arrays *a1* and *a2* have the same shape.
 
-.. c:macro:: a
-
-.. c:macro:: b
-
 .. c:macro:: PyArray_MAX(a,b)
 
     Returns the maximum of *a* and *b*. If (*a*) or (*b*) are
