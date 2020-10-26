@@ -3073,7 +3073,7 @@ Importing the API
 
 In order to make use of the C-API from another extension module, the
 :c:func:`import_array` function must be called. If the extension module is
-self-contained in a single .c file, then that is all that needs to be
+self-contained in a single ``.c`` file, then that is all that needs to be
 done. If, however, the extension module involves multiple files where
 the C-API is needed then some additional steps must be taken.
 
@@ -3091,41 +3091,41 @@ the C-API is needed then some additional steps must be taken.
     Using these #defines you can use the C-API in multiple files for a
     single extension module. In each file you must define
     :c:macro:`PY_ARRAY_UNIQUE_SYMBOL` to some name that will hold the
-    C-API (*e.g.* myextension_ARRAY_API). This must be done **before**
-    including the numpy/arrayobject.h file. In the module
+    C-API (*e.g.* ``myextension_ARRAY_API``). This must be done
+    **before** including the ``numpy/arrayobject.h`` file. In the module
     initialization routine you call :c:func:`import_array`. In addition,
     in the files that do not have the module initialization
     sub_routine define :c:macro:`NO_IMPORT_ARRAY` prior to including
-    numpy/arrayobject.h.
+    ``numpy/arrayobject.h``.
 
-    Suppose I have two files coolmodule.c and coolhelper.c which need
-    to be compiled and linked into a single extension module. Suppose
-    coolmodule.c contains the required initcool module initialization
-    function (with the import_array() function called). Then,
-    coolmodule.c would have at the top:
+    Suppose I have two files ``coolmodule.c`` and ``coolhelper.c`` which
+    need to be compiled and linked into a single extension module. Suppose
+    ``coolmodule.c`` contains the required initcool module initialization
+    function (with the :c:func:`import_array` function called). Then,
+    ``coolmodule.c`` would have at the top:
 
     .. code-block:: c
 
         #define PY_ARRAY_UNIQUE_SYMBOL cool_ARRAY_API
-        #include numpy/arrayobject.h
+        #include "numpy/arrayobject.h"
 
-    On the other hand, coolhelper.c would contain at the top:
+    On the other hand, ``coolhelper.c`` would contain at the top:
 
     .. code-block:: c
 
         #define NO_IMPORT_ARRAY
         #define PY_ARRAY_UNIQUE_SYMBOL cool_ARRAY_API
-        #include numpy/arrayobject.h
+        #include "numpy/arrayobject.h"
 
     You can also put the common two last lines into an extension-local
-    header file as long as you make sure that NO_IMPORT_ARRAY is
+    header file as long as you make sure that ``NO_IMPORT_ARRAY`` is
     #defined before #including that file.
 
     Internally, these #defines work as follows:
 
         * If neither is defined, the C-API is declared to be
           ``static void**``, so it is only visible within the
-          compilation unit that #includes numpy/arrayobject.h.
+          compilation unit that #includes ``numpy/arrayobject.h``.
         * If :c:macro:`PY_ARRAY_UNIQUE_SYMBOL` is #defined, but
           :c:macro:`NO_IMPORT_ARRAY` is not, the C-API is declared to
           be ``void**``, so that it will also be visible to other
