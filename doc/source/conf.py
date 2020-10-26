@@ -146,6 +146,11 @@ def setup(app):
     app.add_config_value('python_version_major', str(sys.version_info.major), 'env')
     app.add_lexer('NumPyC', NumPyLexer)
 
+# Add `numpy.char` and `numpy.testing.dec` to the list of modules.
+# See the review comment of gh-16370 for detail.
+sys.modules['numpy.char'] = numpy.char
+sys.modules['numpy.testing.dec'] = numpy.testing.dec
+
 # -----------------------------------------------------------------------------
 # HTML output
 # -----------------------------------------------------------------------------
