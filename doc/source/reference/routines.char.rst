@@ -1,13 +1,16 @@
 String operations
 *****************
 
-.. currentmodule:: numpy.char
+.. module:: numpy.core.defchararray
+
+The `numpy.core.defchararray` module provides a set of vectorized string
+operations for arrays of type `numpy.str_` or `numpy.bytes_`.
+All of them are based on the string methods in the Python standard library.
 
 .. module:: numpy.char
 
-The `numpy.char` module provides a set of vectorized string
-operations for arrays of type `numpy.str_` or `numpy.bytes_`.
-All of them are based on the string methods in the Python standard library.
+.. note:: :mod:`numpy.char` is the preferred alias for
+   :mod:`numpy.core.defchararray`.
 
 String operations
 -----------------

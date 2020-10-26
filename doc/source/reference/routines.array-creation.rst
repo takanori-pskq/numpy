@@ -46,12 +46,17 @@ From existing data
 Creating record arrays (:mod:`numpy.rec`)
 -----------------------------------------
 
+.. module:: numpy.rec
+
 .. note:: :mod:`numpy.rec` is the preferred alias for
    :mod:`numpy.core.records`.
+
+.. currentmodule:: numpy
 
 .. autosummary::
    :toctree: generated/
 
+   core.records
    core.records.array
    core.records.fromarrays
    core.records.fromrecords
