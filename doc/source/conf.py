@@ -146,8 +146,11 @@ def setup(app):
     app.add_config_value('python_version_major', str(sys.version_info.major), 'env')
     app.add_lexer('NumPyC', NumPyLexer)
 
-# Add `numpy.char` and `numpy.testing.dec` to the list of modules.
-# See the review comment of gh-16370 for detail.
+# While these objects do have type `module`, the names are aliases for modules
+# elsewhere. Sphinx does not support referring to modules by an aliases name,
+# so we make the alias look like a "real" module for it.
+# If we deemed it desirable, we could in future make these real modules, which
+# would make `from numpy.char import split` work.
 sys.modules['numpy.char'] = numpy.char
 sys.modules['numpy.testing.dec'] = numpy.testing.dec
 
