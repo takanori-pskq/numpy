@@ -73,7 +73,7 @@ from . import numeric
 from .numeric import *
 from . import fromnumeric
 from .fromnumeric import *
-from .. import char
+from . import defchararray as char
 from . import records as rec
 from .records import *
 from .memmap import *

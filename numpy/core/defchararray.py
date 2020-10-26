@@ -28,7 +28,6 @@ from numpy.compat import asbytes
 import numpy
 
 __all__ = [
-    'chararray', 'compare_chararrays',
     'equal', 'not_equal', 'greater_equal', 'less_equal',
     'greater', 'less', 'str_len', 'add', 'multiply', 'mod', 'capitalize',
     'center', 'count', 'decode', 'encode', 'endswith', 'expandtabs',
