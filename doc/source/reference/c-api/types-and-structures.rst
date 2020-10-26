@@ -7,7 +7,7 @@ Python Types and C-Structures
 
 Several new types are defined in the C-code. Most of these are
 accessible from Python, but a few are not exposed due to their limited
-use. Every new Python type has an associated :c:type:`PyObject *<PyObject>` with an
+use. Every new Python type has an associated :c:expr:`PyObject *` with an
 internal structure that includes a pointer to a "method table" that
 defines how the new object behaves in Python. When you receive a
 Python object into C code, you always get a pointer to a
@@ -611,7 +611,7 @@ PyArrayDescr_Type and PyArray_Descr
 
         Either ``NULL`` or a dictionary containing low-level casting
         functions for user- defined data-types. Each function is
-        wrapped in a :c:type:`PyCapsule *<PyCapsule>` and keyed by
+        wrapped in a :c:expr:`PyCapsule *` and keyed by
         the data-type number.
 
     .. c:member:: NPY_SCALARKIND scalarkind(PyArrayObject* arr)
@@ -1085,7 +1085,7 @@ the internal structure of the iterator object, and merely interact
 with it through the use of the macros :c:func:`PyArray_ITER_NEXT` (it),
 :c:func:`PyArray_ITER_GOTO` (it, dest), or :c:func:`PyArray_ITER_GOTO1D`
 (it, index). All of these macros require the argument *it* to be a
-:c:type:`PyArrayIterObject *<PyArrayIterObject>`.
+:c:expr:`PyArrayIterObject *`.
 
 
 PyArrayMultiIter_Type and PyArrayMultiIterObject
