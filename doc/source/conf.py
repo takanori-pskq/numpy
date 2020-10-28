@@ -6,6 +6,12 @@ import sys
 # Minimum version, enforced by sphinx
 needs_sphinx = '3.2.0'
 
+nitpick_ignore = [
+        ('c:identifier', 'FILE'),
+        ('c:identifier', 'bool'),
+        ('c:identifier', 'size_t'),
+        ]
+
 
 # This is a nasty hack to use platform-agnostic names for types in the
 # documentation.
