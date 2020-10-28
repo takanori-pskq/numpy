@@ -23,8 +23,8 @@ Array structure and data access
 These macros access the :c:type:`PyArrayObject` structure members and are
 defined in ``ndarraytypes.h``. The input argument, *arr*, can be any
 :c:expr:`PyObject *` that is directly interpretable as a
-:c:expr:`PyArrayObject *` (any instance of the
-:c:data:`PyArray_Type` and its sub-types).
+:c:expr:`PyArrayObject *` (any instance of the :c:data:`PyArray_Type`
+and its sub-types).
 
 .. c:function:: int PyArray_NDIM(PyArrayObject *arr)
 
@@ -2779,16 +2779,14 @@ Data-type descriptors
     Data-type objects must be reference counted so be aware of the
     action on the data-type reference of different C-API calls. The
     standard rule is that when a data-type object is returned it is a
-    new reference.  Functions that take
-    :c:expr:`PyArray_Descr *` objects and
+    new reference.  Functions that take :c:expr:`PyArray_Descr *` objects and
     return arrays steal references to the data-type their inputs
     unless otherwise noted. Therefore, you must own a reference to any
     data-type object used as input to such a function.
 
 .. c:function:: int PyArray_DescrCheck(PyObject* obj)
 
-    Evaluates as true if *obj* is a data-type object (
-    :c:expr:`PyArray_Descr *` ).
+    Evaluates as true if *obj* is a data-type object ( :c:expr:`PyArray_Descr *` ).
 
 .. c:function:: PyArray_Descr* PyArray_DescrNew(PyArray_Descr* obj)
 
