@@ -400,7 +400,7 @@ cdef class RandomState:
 
         See Also
         --------
-        Generator.random: which should be used for new code.
+        random.Generator.random: which should be used for new code.
 
         Examples
         --------
@@ -474,7 +474,7 @@ cdef class RandomState:
 
         See Also
         --------
-        Generator.beta: which should be used for new code.
+        random.Generator.beta: which should be used for new code.
         """
         return cont(&legacy_beta, &self._aug_state, size, self.lock, 2,
                     a, 'a', CONS_POSITIVE,
@@ -523,7 +523,7 @@ cdef class RandomState:
 
         See Also
         --------
-        Generator.exponential: which should be used for new code.
+        random.Generator.exponential: which should be used for new code.
 
         References
         ----------
@@ -568,7 +568,7 @@ cdef class RandomState:
 
         See Also
         --------
-        Generator.standard_exponential: which should be used for new code.
+        random.Generator.standard_exponential: which should be used for new code.
 
         Examples
         --------
@@ -686,7 +686,7 @@ cdef class RandomState:
         random_integers : similar to `randint`, only for the closed
             interval [`low`, `high`], and 1 is the lowest value if `high` is
             omitted.
-        Generator.integers: which should be used for new code.
+        random.Generator.integers: which should be used for new code.
 
         Examples
         --------
@@ -788,7 +788,7 @@ cdef class RandomState:
 
         See Also
         --------
-        Generator.bytes: which should be used for new code.
+        random.Generator.bytes: which should be used for new code.
 
         Examples
         --------
@@ -847,7 +847,7 @@ cdef class RandomState:
         See Also
         --------
         randint, shuffle, permutation
-        Generator.choice: which should be used in new code
+        random.Generator.choice: which should be used in new code
 
         Notes
         -----
@@ -1048,7 +1048,7 @@ cdef class RandomState:
         rand : Convenience function that accepts dimensions as input, e.g.,
                ``rand(2,2)`` would generate a 2-by-2 array of floats,
                uniformly distributed over ``[0, 1)``.
-        Generator.uniform: which should be used for new code.
+        random.Generator.uniform: which should be used for new code.
 
         Notes
         -----
@@ -1210,7 +1210,7 @@ cdef class RandomState:
         --------
         standard_normal : Similar, but takes a tuple as its argument.
         normal : Also accepts mu and sigma arguments.
-        Generator.standard_normal: which should be used for new code.
+        random.Generator.standard_normal: which should be used for new code.
 
         Notes
         -----
@@ -1359,7 +1359,7 @@ cdef class RandomState:
         normal :
             Equivalent function with additional ``loc`` and ``scale`` arguments
             for setting the mean and standard deviation.
-        Generator.standard_normal: which should be used for new code.
+        random.Generator.standard_normal: which should be used for new code.
 
         Notes
         -----
@@ -1438,7 +1438,7 @@ cdef class RandomState:
         --------
         scipy.stats.norm : probability density function, distribution or
             cumulative density function, etc.
-        Generator.normal: which should be used for new code.
+        random.Generator.normal: which should be used for new code.
 
         Notes
         -----
@@ -1535,7 +1535,7 @@ cdef class RandomState:
         --------
         scipy.stats.gamma : probability density function, distribution or
             cumulative density function, etc.
-        Generator.standard_gamma: which should be used for new code.
+        random.Generator.standard_gamma: which should be used for new code.
 
         Notes
         -----
@@ -1619,7 +1619,7 @@ cdef class RandomState:
         --------
         scipy.stats.gamma : probability density function, distribution or
             cumulative density function, etc.
-        Generator.gamma: which should be used for new code.
+        random.Generator.gamma: which should be used for new code.
 
         Notes
         -----
@@ -1707,7 +1707,7 @@ cdef class RandomState:
         --------
         scipy.stats.f : probability density function, distribution or
             cumulative density function, etc.
-        Generator.f: which should be used for new code.
+        random.Generator.f: which should be used for new code.
 
         Notes
         -----
@@ -1800,7 +1800,7 @@ cdef class RandomState:
 
         See Also
         --------
-        Generator.noncentral_f: which should be used for new code.
+        random.Generator.noncentral_f: which should be used for new code.
 
         Notes
         -----
@@ -1882,7 +1882,7 @@ cdef class RandomState:
 
         See Also
         --------
-        Generator.chisquare: which should be used for new code.
+        random.Generator.chisquare: which should be used for new code.
 
         Notes
         -----
@@ -1954,7 +1954,7 @@ cdef class RandomState:
 
         See Also
         --------
-        Generator.noncentral_chisquare: which should be used for new code.
+        random.Generator.noncentral_chisquare: which should be used for new code.
 
         Notes
         -----
@@ -2032,7 +2032,7 @@ cdef class RandomState:
 
         See Also
         --------
-        Generator.standard_cauchy: which should be used for new code.
+        random.Generator.standard_cauchy: which should be used for new code.
 
         Notes
         -----
@@ -2111,7 +2111,7 @@ cdef class RandomState:
 
         See Also
         --------
-        Generator.standard_t: which should be used for new code.
+        random.Generator.standard_t: which should be used for new code.
 
         Notes
         -----
@@ -2220,7 +2220,7 @@ cdef class RandomState:
         --------
         scipy.stats.vonmises : probability density function, distribution, or
             cumulative density function, etc.
-        Generator.vonmises: which should be used for new code.
+        random.Generator.vonmises: which should be used for new code.
 
         Notes
         -----
@@ -2318,7 +2318,7 @@ cdef class RandomState:
             cumulative density function, etc.
         scipy.stats.genpareto : probability density function, distribution or
             cumulative density function, etc.
-        Generator.pareto: which should be used for new code.
+        random.Generator.pareto: which should be used for new code.
 
         Notes
         -----
@@ -2412,7 +2412,7 @@ cdef class RandomState:
         scipy.stats.weibull_min
         scipy.stats.genextreme
         gumbel
-        Generator.weibull: which should be used for new code.
+        random.Generator.weibull: which should be used for new code.
 
         Notes
         -----
@@ -2509,7 +2509,7 @@ cdef class RandomState:
 
         See Also
         --------
-        Generator.power: which should be used for new code.
+        random.Generator.power: which should be used for new code.
 
         Notes
         -----
@@ -2618,7 +2618,7 @@ cdef class RandomState:
 
         See Also
         --------
-        Generator.laplace: which should be used for new code.
+        random.Generator.laplace: which should be used for new code.
 
         Notes
         -----
@@ -2713,7 +2713,7 @@ cdef class RandomState:
         scipy.stats.gumbel_r
         scipy.stats.genextreme
         weibull
-        Generator.gumbel: which should be used for new code.
+        random.Generator.gumbel: which should be used for new code.
 
         Notes
         -----
@@ -2833,7 +2833,7 @@ cdef class RandomState:
         --------
         scipy.stats.logistic : probability density function, distribution or
             cumulative density function, etc.
-        Generator.logistic: which should be used for new code.
+        random.Generator.logistic: which should be used for new code.
 
         Notes
         -----
@@ -2920,7 +2920,7 @@ cdef class RandomState:
         --------
         scipy.stats.lognorm : probability density function, distribution,
             cumulative density function, etc.
-        Generator.lognormal: which should be used for new code.
+        random.Generator.lognormal: which should be used for new code.
 
         Notes
         -----
@@ -3028,7 +3028,7 @@ cdef class RandomState:
 
         See Also
         --------
-        Generator.rayleigh: which should be used for new code.
+        random.Generator.rayleigh: which should be used for new code.
 
         Notes
         -----
@@ -3112,7 +3112,7 @@ cdef class RandomState:
 
         See Also
         --------
-        Generator.wald: which should be used for new code.
+        random.Generator.wald: which should be used for new code.
 
         Notes
         -----
@@ -3189,7 +3189,7 @@ cdef class RandomState:
 
         See Also
         --------
-        Generator.triangular: which should be used for new code.
+        random.Generator.triangular: which should be used for new code.
 
         Notes
         -----
@@ -3296,7 +3296,7 @@ cdef class RandomState:
         --------
         scipy.stats.binom : probability density function, distribution or
             cumulative density function, etc.
-        Generator.binomial: which should be used for new code.
+        random.Generator.binomial: which should be used for new code.
 
         Notes
         -----
@@ -3444,7 +3444,7 @@ cdef class RandomState:
 
         See Also
         --------
-        Generator.negative_binomial: which should be used for new code.
+        random.Generator.negative_binomial: which should be used for new code.
 
         Notes
         -----
@@ -3526,7 +3526,7 @@ cdef class RandomState:
 
         See Also
         --------
-        Generator.poisson: which should be used for new code.
+        random.Generator.poisson: which should be used for new code.
 
         Notes
         -----
@@ -3613,7 +3613,7 @@ cdef class RandomState:
         --------
         scipy.stats.zipf : probability density function, distribution, or
             cumulative density function, etc.
-        Generator.zipf: which should be used for new code.
+        random.Generator.zipf: which should be used for new code.
 
         Notes
         -----
@@ -3701,7 +3701,7 @@ cdef class RandomState:
 
         See Also
         --------
-        Generator.geometric: which should be used for new code.
+        random.Generator.geometric: which should be used for new code.
 
         Examples
         --------
@@ -3765,7 +3765,7 @@ cdef class RandomState:
         --------
         scipy.stats.hypergeom : probability density function, distribution or
             cumulative density function, etc.
-        Generator.hypergeometric: which should be used for new code.
+        random.Generator.hypergeometric: which should be used for new code.
 
         Notes
         -----
@@ -3888,7 +3888,7 @@ cdef class RandomState:
         --------
         scipy.stats.logser : probability density function, distribution or
             cumulative density function, etc.
-        Generator.logseries: which should be used for new code.
+        random.Generator.logseries: which should be used for new code.
 
         Notes
         -----
@@ -3991,7 +3991,7 @@ cdef class RandomState:
 
         See Also
         --------
-        Generator.multivariate_normal: which should be used for new code.
+        random.Generator.multivariate_normal: which should be used for new code.
 
         Notes
         -----
@@ -4161,7 +4161,7 @@ cdef class RandomState:
 
         See Also
         --------
-        Generator.multinomial: which should be used for new code.
+        random.Generator.multinomial: which should be used for new code.
 
         Examples
         --------
@@ -4276,7 +4276,7 @@ cdef class RandomState:
 
         See Also
         --------
-        Generator.dirichlet: which should be used for new code.
+        random.Generator.dirichlet: which should be used for new code.
 
         Notes
         -----
@@ -4411,7 +4411,7 @@ cdef class RandomState:
 
         See Also
         --------
-        Generator.shuffle: which should be used for new code.
+        random.Generator.shuffle: which should be used for new code.
 
         Examples
         --------
@@ -4509,7 +4509,7 @@ cdef class RandomState:
 
         See Also
         --------
-        Generator.permutation: which should be used for new code.
+        random.Generator.permutation: which should be used for new code.
 
         Examples
         --------
